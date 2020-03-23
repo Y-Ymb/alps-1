@@ -35,3 +35,4 @@ jobs:
         cd build/
         cmake .. -DTARGET_ARCH_MEM=CC-NUMA -DCMAKE_BUILD_TYPE=Debug
         make
+        
