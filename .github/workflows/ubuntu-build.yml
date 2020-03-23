@@ -1,0 +1,37 @@
+# This is a basic workflow to help you get started with Actions
+
+name: alps Continuous Build
+
+# Controls when the action will run. Triggers the workflow on push or pull request 
+# events but only for the master branch
+on: [push, pull_request]
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+    # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+    - uses: actions/checkout@v2
+
+    # Runs a single command using the runners shell
+    - name: install packages and libraries
+      run: |
+        sudo apt update
+        sudo apt install cmake git python g++
+        sudo apt install libgtest-dev libgoogle-glog-dev numactl libconfig-dev libattr1-dev
+        sudo apt install libyaml-cpp-dev attr libtbb2 libtbb-dev python-dev bzip2 
+        sudo apt install google-perftools libgoogle-perftools-dev libgoogle-perftools4
+        sudo apt install libgflags-dev libboost-all-dev
+        
+    # Runs a set of commands using the runners shell
+    - name: build alps
+      run: |
+        mkdir build/
+        cd build/
+        cmake .. -DTARGET_ARCH_MEM=CC-NUMA -DCMAKE_BUILD_TYPE=Debug
+        make
