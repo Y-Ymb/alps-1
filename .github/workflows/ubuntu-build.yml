@@ -31,4 +31,5 @@ jobs:
     - name: test globalheap
       run: |
       cd test/unit/globalheap
-      ./test_globalheap
+      pwd
+      test_globalheap
