@@ -30,38 +30,27 @@ abstractions and data structures such as heaps, logs, etc.
 
 For Debug build type (default):
 
-	$ cmake .. -DTARGET_ARCH_MEM=NV-NCC-FAM -DCMAKE_BUILD_TYPE=Debug
+	$ cmake .. -DTARGET_ARCH_MEM=CC-NUMA -DCMAKE_BUILD_TYPE=Debug
 
 For Release build type:
 
-	$ cmake .. -DTARGET_ARCH_MEM=NV-NCC-FAM -DCMAKE_BUILD_TYPE=Release
+	$ cmake .. -DTARGET_ARCH_MEM=CC-NUMA -DCMAKE_BUILD_TYPE=Release
+
+If you want to execute ALPINiSM on L4TM environment, replace `CC-NUMA` with `NV-NCC-FAM`.
 
 ## Installing Dependencies
 
+### Ubuntu18.04
+
+apt-get install cmake libnuma1 libnuma-dev python3 libyaml-cpp-dev libgflags-dev libboost-all-dev
+
 ### L4TM
 
-apt-get install vim git
-apt-get install cmake
-apt-get install libnuma 
-apt-get install libnuma-dev
-
-apt-get install libconfig++-dev
-
-sudo apt-get install libboost-all-dev
-
-OR
-
-sudo apt-get install libboost-dev
-sudo apt-get install libboost-serialization-dev
-
-sudo apt-get install libattr1-dev
-sudo apt-get install libyaml-cpp-dev
-
-sudo apt-get install python3
+sudo apt-get install libboost-dev libboost-serialization-dev libattr1-dev libyaml-cpp-dev python3
 
 ### RedHat
 
-sudo yum install attr1
+sudo yum install attr1 numactl-devel numactl-libs numactl yaml-cpp-devel python-devel gflags-devel boost169-devel
 
 
 ## Example Programs
